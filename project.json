@@ -1,0 +1,22 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "sour-envy-update"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "2020/local/fyi-guy-covid-rates-july-falling"
+    }
+  },
+  "title": "",
+  "description": "",
+  "author": "",
+  "url": "",
+  "post_id": 0,
+  "image": "assets/social.jpg",
+  "sheets": [],
+  "docs": [],
+  "embedded": true,
+  "production": true
+}

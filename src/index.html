@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_dataLayer.html") %>
+      <%= t.include("partials/_gtm.html") %>
+    <% } %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtmNoScript.html") %>
+    <% } %>
+    <responsive-child class="interactive">
+
+      <div class="graphic-hed">Two weeks of COVID-19 tests</div>
+
+      <div class="graphic-chatter">Over the past two weeks, 3.9% of COVID-19 tests in King County were positive for the virus &mdash; but the percentage was as high as 13.1% in the southern part of Auburn. </div>
+      <!-- content goes here -->
+
+      <div id="legendCon">
+        <div class="label">Percent of positive tests July 13-27, 2020</div>
+        <div class="legend">
+          <div class="color" style="background-color:#FAE2C1;"></div>
+          <div class="number">
+            <span class="tests_pos">0 - 2.9 %</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#F4BD6E;"></div>
+          <div class="number">
+            <span class="tests_pos">3.0 - 5.9 %</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#ED8A52;"></div>
+          <div class="number">
+            <span class="tests_pos">6.0 - 8.9 %</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#E34D32;"></div>
+          <div class="number">
+            <span class="tests_pos">9 - 11.9 %</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div id="last" class="color" style="background-color:#B22118;"></div>
+          <div class="number">
+            <span class="tests_pos">12 % + </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="map" class="aspect-ratio-outer">
+        <div class="aspect-ratio-inner">
+
+          <leaflet-map>
+            <tile-layer layer="cartoPositron"></tile-layer>
+          </leaflet-map>
+
+        </div>
+      </div>
+
+      <figcaption class="source-container">
+          <p class="data-source">Source: Public Health - Seattle & King County</p>
+          <p class="art-credit">Lauren Flannery / The Seattle Times</p>
+        </figcaption>
+
+
+    </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

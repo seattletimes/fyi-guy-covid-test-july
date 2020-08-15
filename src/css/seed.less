@@ -1,0 +1,172 @@
+@import "seattletimes";
+@aspect-ratio: 6.2/10;
+@legend-length: 5; //number of legend items
+body {
+  font-family: @df-sans;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 630px;
+  font-size: 16px;
+  clear: both;
+}
+
+
+.chatter {
+  h2 {
+    font-size: 20px;
+    line-height: 1.3em;
+    text-align: center;
+  }
+}
+
+.outmost {
+  border-top: 1px solid @df-border-gray;
+  border-bottom: 1px solid @df-border-gray;
+  padding: 8px 0;
+  margin: 20px auto;
+  max-width: 960px;
+  padding-bottom: 15px;
+  clear: both;
+}
+.aspect-ratio-outer {
+  width: 100%;
+  position: relative;
+  .aspect-ratio-inner {
+    padding-bottom: percentage(@aspect-ratio);
+    position: relative;
+  }
+  leaflet-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &:not([ready]) {
+      display: none;
+    }
+  }
+}
+.map-container {
+  position: relative;
+}
+.bigheader {
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 12px 0 0;
+  @media @tablet {
+    font-size: 14px;
+  }
+}
+
+.chatter {
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  p {
+    text-align: center;
+    font-family: @df-serif;
+  }
+}
+
+.restrooms-icon {
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 100%;
+  background-color: #cbc9e2;
+}
+
+.showers-icon {
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 100%;
+  background-color: purple;
+}
+
+.laundry-icon {
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 100%;
+  background-color: #361c70;
+}
+@import "leaflet-tweaks";
+@import "legend";
+@import "popup";
+
+
+
+
+.colorKey {
+  margin-bottom: 5px;
+  padding: 2px;
+
+  .key {
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 2px;
+
+    .color {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: top;
+
+      &.restrooms { background-color: #cbc9e2; }
+      &.showers { background-color: purple; }
+      &.laundry { background-color: #361c70; }
+    }
+  }
+}
+
+.buttonCon {
+  margin: 1em auto;
+
+  .button {
+    // width: 49%;
+    // display: inline-block;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: @df-light-gray;
+    margin: 2px auto;
+    padding: 10px;
+    cursor: pointer;
+
+    &.active {
+      background-color: @df-middle-gray;
+    }
+  }
+
+  .button:hover {
+    background-color: @df-middle-gray;
+  }
+}
+
+#legendCon {
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+  text-align: center;
+
+  .label { font-weight: bold; margin-bottom: 0.2em; }
+
+  .legend {
+    display: inline-block;
+    margin-right: 10px;
+
+    .color {
+      width: 20px;
+      height: 10px;
+      display: inline-block;
+    }
+
+    .number {
+      display: inline-block;
+
+      span {
+
+        &.hide { display: none; }
+      }
+    }
+  }
+}
